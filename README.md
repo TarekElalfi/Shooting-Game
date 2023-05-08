@@ -1,2 +1,3 @@
-# reverse-pacman
-creating a reverse pacman game using C++
+# Shooting-Game
+Creating a spacecraft shooting game using C++
+  Tarek ElAlfi & Khaled Saleh

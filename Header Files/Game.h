@@ -19,7 +19,7 @@ private:
 
  public:
      Game();
-     ssa
+
 
  virtual ~Game();
      // Functions

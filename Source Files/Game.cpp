@@ -5,11 +5,14 @@
 #include "../Header Files/Game.h"
 //here we gonna have our private functions
 void Game::initWindow() {
- this-> window = new sf:: RenderWindow(sf::VideoMode(800,600),"Shooting Game", sf::Style::Close |sf::Style:: Titlebar )
-}
+    this-> window = new sf:: RenderWindow(sf::VideoMode(800,600),"Shooting Game", sf::Style::Close |sf::Style:: Titlebar );
+     this->window->setFramerateLimit(144);
+     this->window->setVerticalSyncEnabled(false);
+            ;}
 // CONS
-Game::Game() {
- this -> initWindow();
+Game::Game()
+{
+    this -> initWindow();
 }
 
 Game::~Game() {
@@ -30,6 +33,13 @@ void Game::run()
 }
 void Game:: update()
 {
+    sf::Event e; //to close the game window
+    while (this->window->pollEvent(e)){
+        if(e.Event::type==sf::Event::Closed)
+            this->window->close();
+        if(e.Event::KeyPressed && e.Event::key.code==sf::Keyboard::Escape)
+            this->window->close();
+    }
 
 }
 void Game:: render()
@@ -40,6 +50,5 @@ void Game:: render()
 
 
 }
-
 
 

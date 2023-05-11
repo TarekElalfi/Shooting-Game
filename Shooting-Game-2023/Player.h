@@ -9,10 +9,13 @@
 #include "SFML/Window.hpp"
 #include "SFML/Window/ContextSettings.hpp"
 #include "SFML/System.hpp"
+#include<iostream>
 class Player {
 private:
     sf::Sprite sprite;
     sf::Texture texture;
+
+    float movementSpeed;
 
     // private functions
     void initTexture();
@@ -22,7 +25,7 @@ public:
     Player();
     virtual~Player();
 
-
+    void move(const float dirX, const float dirY);
     //    Functions
 
     void update();

@@ -2,31 +2,37 @@
 #ifndef SHOOTING_GAME_GAME_H
 #define SHOOTING_GAME_GAME_H
 #include <SFML/Graphics.hpp>
-#include <include/SFML/Graphics.hpp>
-
+#include <SFML/Graphics.hpp>
+#include "SFML/Window.hpp"
+#include "SFML/Window/ContextSettings.hpp"
+#include "Player.h"
 
 //#include <tkDecls.h>
 
 
 class Game
- {
+{
 private:
-     sf:RenderWindow* window;
-     void initWindow();
+    sf::RenderWindow* window;
 
- public:
-     Game();
+    Player* player;
+
+    void initWindow();
+    void initPlayer();
+public:
+    Game();
 
 
- virtual ~Game();
-     // Functions
-     void run();
-     void update();
-     void render();
+    virtual ~Game();
+    // Functions
+    void run();
+    void update();
+    void render();
 
- };
+};
 
 
 
 
 #endif //SHOOTING_GAME_GAME_H
+

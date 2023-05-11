@@ -10,14 +10,21 @@ void Game::initWindow() {
     this->window->setVerticalSyncEnabled(false);
     ;
 }
+void Game::initPlayer()
+{
+    this->player = new Player();
+}
 // CONS
 Game::Game()
 {
     this->initWindow();
+    this->initPlayer();
+
 }
 
 Game::~Game() {
     delete this->window;
+    delete this->player;
 
 }
 //Functions
@@ -41,12 +48,22 @@ void Game::update()
         if (e.Event::KeyPressed && e.Event::key.code == sf::Keyboard::Escape)
             this->window->close();
     }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        this->player->move(-1.f, 0.f);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        this->player->move(1.f, 0.f);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        this->player->move(0.f, -1.f);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        this->player->move(0.f, 1.f);
 
 }
 void Game::render()
 {
     this->window->clear(); // to clear the old frame
     //Draw all the stuff we gonna build
+    this->player->render(*this->window);
+
     this->window->display();
 
 

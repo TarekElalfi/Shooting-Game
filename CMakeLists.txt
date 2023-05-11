@@ -13,4 +13,4 @@ add_executable(Shooting_Game
         "Shooting-Game-2023/main.cpp"
         "Shooting-Game-2023/Player.h"
         "Shooting-Game-2023/Player.cpp"
-        )
+        Shooting-Game-2023/Bullet.h Shooting-Game-2023/Bullet.cpp)

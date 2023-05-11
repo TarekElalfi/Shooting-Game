@@ -28,9 +28,9 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Audio/Export.hpp>
-#include <SFML/Audio/SoundSource.hpp>
-#include <SFML/System/Time.hpp>
+#include <External/include/SFML/Audio/Export.hpp>
+#include <External/include/SFML/Audio/SoundSource.hpp>
+#include <External/include/SFML/System/Time.hpp>
 #include <cstdlib>
 
 

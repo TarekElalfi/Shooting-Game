@@ -29,11 +29,11 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/System/Export.hpp>
+#include <External/include/SFML/System/Export.hpp>
 
 
 #if !defined(SFML_SYSTEM_ANDROID)
-#error NativeActivity.hpp: This header is Android only.
+//#error NativeActivity.hpp: This header is Android only.
 #endif
 
 

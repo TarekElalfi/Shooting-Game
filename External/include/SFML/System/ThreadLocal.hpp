@@ -28,8 +28,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/System/Export.hpp>
-#include <SFML/System/NonCopyable.hpp>
+#include <External/include/SFML/System/Export.hpp>
+#include <External/include/SFML/System/NonCopyable.hpp>
 #include <cstdlib>
 
 

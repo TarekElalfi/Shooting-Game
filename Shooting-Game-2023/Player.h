@@ -4,11 +4,11 @@
 
 #ifndef SHOOTING_GAME_PLAYER_H
 #define SHOOTING_GAME_PLAYER_H
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics.hpp>
-#include "SFML/Window.hpp"
-#include "SFML/Window/ContextSettings.hpp"
-#include "SFML/System.hpp"
+#include <External/include/SFML/Graphics.hpp>
+
+#include "External/include/SFML/Window.hpp"
+#include "External/include/SFML/Window/ContextSettings.hpp"
+#include "External/include/SFML/System.hpp"
 class Player {
 private:
     sf::Sprite sprite;

@@ -1,9 +1,9 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Network.hpp>
+#include <External/include/SFML/Graphics.hpp>
+#include <External/include/SFML/System.hpp>
+#include <External/include/SFML/Window.hpp>
+#include <External/include/SFML/Audio.hpp>
+#include <External/include/SFML/Network.hpp>
 #include "Game.h"
 int main()
 {

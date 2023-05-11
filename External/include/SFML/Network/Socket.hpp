@@ -28,9 +28,9 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Network/Export.hpp>
-#include <SFML/Network/SocketHandle.hpp>
-#include <SFML/System/NonCopyable.hpp>
+#include <External/include/SFML/Network/Export.hpp>
+#include <External/include/SFML/Network/SocketHandle.hpp>
+#include <External/include/SFML/System/NonCopyable.hpp>
 #include <vector>
 
 

@@ -28,10 +28,10 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Transform.hpp>
-#include <SFML/Graphics/Color.hpp>
-#include <SFML/System/Vector2.hpp>
-#include <SFML/System/Vector3.hpp>
+#include <External/include/SFML/Graphics/Transform.hpp>
+#include <External/include/SFML/Graphics/Color.hpp>
+#include <External/include/SFML/System/Vector2.hpp>
+#include <External/include/SFML/System/Vector3.hpp>
 
 
 namespace sf
@@ -45,7 +45,7 @@ namespace priv
     template <typename T>
     struct Vector4;
 
-#include <SFML/Graphics/Glsl.inl>
+#include <External/include/SFML/Graphics/Glsl.inl>
 
 } // namespace priv
 

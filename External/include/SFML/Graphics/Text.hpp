@@ -28,13 +28,13 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Export.hpp>
-#include <SFML/Graphics/Drawable.hpp>
-#include <SFML/Graphics/Transformable.hpp>
-#include <SFML/Graphics/Font.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/Graphics/VertexArray.hpp>
-#include <SFML/System/String.hpp>
+#include <External/include/SFML/Graphics/Export.hpp>
+#include <External/include/SFML/Graphics/Drawable.hpp>
+#include <External/include/SFML/Graphics/Transformable.hpp>
+#include <External/include/SFML/Graphics/Font.hpp>
+#include <External/include/SFML/Graphics/Rect.hpp>
+#include <External/include/SFML/Graphics/VertexArray.hpp>
+#include <External/include/SFML/System/String.hpp>
 #include <string>
 #include <vector>
 

@@ -28,8 +28,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Audio/Export.hpp>
-#include <SFML/System/NonCopyable.hpp>
+#include <External/include/SFML/Audio/Export.hpp>
+#include <External/include/SFML/System/NonCopyable.hpp>
 #include <string>
 
 

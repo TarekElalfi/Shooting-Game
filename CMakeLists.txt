@@ -8,6 +8,9 @@ include_directories("Header Files")
 include_directories("Source Files")
 
 add_executable(Shooting_Game
-        "Header Files/Game.h"
-        "Source Files/Game.cpp"
-        "Source Files/main.cpp")
+        "Shooting-Game-2023/Game.h"
+        "Shooting-Game-2023/Game.cpp"
+        "Shooting-Game-2023/main.cpp"
+        "Shooting-Game-2023/Player.h"
+        "Shooting-Game-2023/Player.cpp"
+        )

@@ -25,8 +25,11 @@ public:
     Player();
     virtual~Player();
 
-    void move(const float dirX, const float dirY);
+    //Accessor
+    const sf::Vector2f&getPos() const;
+
     //    Functions
+    void move(const float dirX, const float dirY);
 
     void update();
     void render(sf::RenderTarget& target);

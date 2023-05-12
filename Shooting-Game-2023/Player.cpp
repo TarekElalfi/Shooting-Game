@@ -40,4 +40,8 @@ void Player::initSprite() {
     this->sprite.scale(0.1f, 0.1f);
 }
 
+const sf::Vector2f &Player::getPos() const {
+    return this->sprite.getPosition() ;
+}
+
 

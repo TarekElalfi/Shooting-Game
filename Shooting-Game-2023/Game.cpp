@@ -55,6 +55,7 @@ void Game::update()
 {
     this->updatePollEvents();
     this->updateInput();
+    this->player->update();
     this->updateBullets();
 
 }
@@ -93,9 +94,9 @@ void Game::updateInput() {
         this->player->move(0.f, -1.f);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         this->player->move(0.f, 1.f);
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)&& this->player->canAttcak())
     {
-        this->bullets.push_back(new Bullet(this->textures["BULLET"], this->player->getPos().x, this->player->getPos().y, 0.f, 0.f, 0.f));
+        this->bullets.push_back(new Bullet(this->textures["BULLET"], this->player->getPos().x, this->player->getPos().y, 0.f, -1.f, 5.f));
 
     }
 
@@ -109,9 +110,20 @@ void Game::initTextures()
 }
 
 void Game::updateBullets() {
-    for (auto* bullet : this->bullets)
+
+    unsigned counter = 0;
+
+    for (auto *bullet : this->bullets)
     {
         bullet->update();
+
+        if (bullet->getBounds().top + bullet->getBounds().height < 0.f) {
+        
+            delete this->bullets.at(counter);
+            this->bullets.erase(this->bullets.begin() + counter);
+            --counter;
+        }
+        ++counter;
     }
 
 

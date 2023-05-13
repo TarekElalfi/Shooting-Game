@@ -4,7 +4,7 @@
 
 #include "Player.h"
 Player::Player() {
-    this->movementSpeed = 2.f;
+    this->initVariables();
     this->initTexture();
     this->initSprite();
 
@@ -17,13 +17,38 @@ void Player::move(const float dirX, const float dirY)
 {
     this->sprite.move(this->movementSpeed * dirX, this->movementSpeed * dirY);
 }
-void Player::update() {
+const bool Player::canAttcak()
+{
+    if (this->attackCooldown >= this->attackCooldownMax) {
+        this->attackCooldown = 0.f;
+        return true;
+    }
+   
+        return false;
 
+}
+void Player::updateAttack()
+{
+    if (this->attackCooldown < this->attackCooldownMax) {
+        this->attackCooldown += 0.5f;
+    }
+
+}
+void Player::update() {
+    this->updateAttack();
 
 }
 //& is the address operator
 void Player::render(sf::RenderTarget& target) {
     target.draw(this->sprite);
+}
+
+void Player::initVariables()
+{
+    this->movementSpeed = 2.f;
+    this->attackCooldownMax = 10.f;
+    this->attackCooldown = this->attackCooldownMax;
+
 }
 
 void Player::initTexture() {

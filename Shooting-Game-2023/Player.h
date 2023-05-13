@@ -26,7 +26,7 @@ public:
     virtual~Player();
 
     //Accessor
-    const sf::Vector2f&getPos() const;
+    const sf::Vector2f& getPos() const;
 
     //    Functions
     void move(const float dirX, const float dirY);

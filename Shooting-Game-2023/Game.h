@@ -8,7 +8,7 @@
 #include <map>
 #include "Player.h"
 #include "Bullet.h"
-#include "External/include/SFML/Graphics/Texture.hpp"
+#include "SFML/Graphics/Texture.hpp"
 
 //#include <tkDecls.h>
 
@@ -20,7 +20,7 @@ private:
     sf::RenderWindow* window;
 
     //Resources
-    std::map<std::string ,sf::Texture*> textures;
+    std::map<std::string, sf::Texture*> textures;
     std::vector<Bullet*> bullets;
 
 
@@ -42,7 +42,7 @@ public:
     void updateInput();
     void update();
     void render();
-   void updateBullets();
+    void updateBullets();
 
 };
 

@@ -28,12 +28,12 @@ Game::~Game() {
     delete this->player;
 
     // Delete the texutres
-    for(auto &i : this->textures){
+    for (auto& i : this->textures) {
         delete i.second;
     }
 
     //delete bullets
-    for (auto *i: this->bullets)
+    for (auto* i : this->bullets)
     {
         delete i;
     }
@@ -64,7 +64,7 @@ void Game::render()
     //Draw all the stuff we gonna build
     this->player->render(*this->window);
 
-    for(auto *bullet : this->bullets)
+    for (auto* bullet : this->bullets)
     {
         bullet->render(this->window);
     }
@@ -95,7 +95,7 @@ void Game::updateInput() {
         this->player->move(0.f, 1.f);
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
-        this->bullets.push_back(new Bullet(this->textures["BULLET"], this->player->getPos().x,this->player->getPos().y,0.f,0.f,0.f));
+        this->bullets.push_back(new Bullet(this->textures["BULLET"], this->player->getPos().x, this->player->getPos().y, 0.f, 0.f, 0.f));
 
     }
 
@@ -103,13 +103,13 @@ void Game::updateInput() {
 
 void Game::initTextures()
 {
-    this-> textures["BULLET"]= new sf::Texture();
+    this->textures["BULLET"] = new sf::Texture();
     this->textures["BULLET"]->loadFromFile("Textures/bullet.png");
 
 }
 
 void Game::updateBullets() {
-    for(auto *bullet : this->bullets)
+    for (auto* bullet : this->bullets)
     {
         bullet->update();
     }

@@ -4,9 +4,9 @@
 
 #ifndef SHOOTING_GAME_BULLET_H
 #define SHOOTING_GAME_BULLET_H
-#include "External/include/SFML/Graphics.hpp"
+#include "SFML/Graphics.hpp"
 #include "iostream"
-class Bullet{
+class Bullet {
 private:
     sf::Sprite shape;
 
@@ -18,7 +18,7 @@ private:
 
 public:
     Bullet();
-    Bullet(sf::Texture *texture,float pos_x,float pos_y, float dir_x, float dir_y, float movement_speed);
+    Bullet(sf::Texture* texture, float pos_x, float pos_y, float dir_x, float dir_y, float movement_speed);
     virtual ~Bullet();
     //Access to get the position
     const sf::FloatRect getBounds() const;

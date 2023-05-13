@@ -15,7 +15,7 @@ Player::~Player() {
 }
 void Player::move(const float dirX, const float dirY)
 {
-    this->sprite.move(this->movementSpeed * dirX,this->movementSpeed * dirY);
+    this->sprite.move(this->movementSpeed * dirX, this->movementSpeed * dirY);
 }
 void Player::update() {
 
@@ -40,8 +40,8 @@ void Player::initSprite() {
     this->sprite.scale(0.1f, 0.1f);
 }
 
-const sf::Vector2f &Player::getPos() const {
-    return this->sprite.getPosition() ;
+const sf::Vector2f& Player::getPos() const {
+    return this->sprite.getPosition();
 }
 
 

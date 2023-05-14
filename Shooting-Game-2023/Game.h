@@ -8,6 +8,7 @@
 #include <map>
 #include "Player.h"
 #include "Bullet.h"
+#include "Enemy.h"
 #include "SFML/Graphics/Texture.hpp"
 
 //#include <tkDecls.h>
@@ -26,6 +27,9 @@ private:
 
     //Player
     Player* player;
+
+    //Enemies
+    Enemy* enemy;
 
     void initWindow();
     void initTextures();

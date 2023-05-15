@@ -9,7 +9,7 @@
 int main()
 {
     //check if it's good (initialize seed from time for random shapes)
-    srand(time(static_cast<unsigned>(0)));
+    srand(static_cast<unsigned>(time(0)));
 
     Game game;
     game.run();

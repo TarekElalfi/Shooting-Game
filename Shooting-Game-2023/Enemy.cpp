@@ -4,10 +4,10 @@
 
 #include "Enemy.h"
 
-Enemy::Enemy(float pos_x,float pos_y) {
+Enemy::Enemy(float pos_x, float pos_y) {
     this->initShape();
     this->initVariables();
-    this->shape .setPosition(pos_x,pos_y);
+    this->shape.setPosition(pos_x, pos_y);
 
 
 
@@ -24,16 +24,16 @@ void Enemy::initShape() {
 }
 
 void Enemy::initVariables() {
-   this-> type =0 ;
-   this-> hpMax=10;
-   this-> hp =0 ;
-   this-> damage=1;
-   this-> points=5;
+    this->type = 0;
+    this->hpMax = 10;
+    this->hp = 0;
+    this->damage = 1;
+    this->points = 5;
 
 }
 // Functions
-void Enemy::render(sf::RenderTarget *target) {
-target->draw(this->shape);
+void Enemy::render(sf::RenderTarget* target) {
+    target->draw(this->shape);
 }
 
 void Enemy::update() {

@@ -6,7 +6,7 @@
 #define ENEMY_H
 #include "SFML/Graphics.hpp"
 
-class Enemy{
+class Enemy {
 private:
     sf::CircleShape shape;
     int type;
@@ -20,14 +20,14 @@ private:
 
 
 public:
-    Enemy(float pos_x,float pos_y);
+    Enemy(float pos_x, float pos_y);
 
-virtual ~Enemy();
+    virtual ~Enemy();
 
-//Functions
+    //Functions
 
-void update();
-void render(sf::RenderTarget* target);
+    void update();
+    void render(sf::RenderTarget* target);
 
 };
 

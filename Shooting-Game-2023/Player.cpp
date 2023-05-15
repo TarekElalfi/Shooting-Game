@@ -23,8 +23,8 @@ const bool Player::canAttcak()
         this->attackCooldown = 0.f;
         return true;
     }
-   
-        return false;
+
+    return false;
 
 }
 void Player::updateAttack()

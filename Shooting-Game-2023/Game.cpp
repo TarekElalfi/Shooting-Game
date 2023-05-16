@@ -14,7 +14,12 @@ void Game::initPlayer()
 {
     this->player = new Player();
 
-    this->enemy = new Enemy(20.f, 20.f);
+   
+}
+void Game::initEnemies()
+{
+    this->timerMax = 50.f;
+    this->spawnTimer = this->timerMax;
 }
 // CONS
 Game::Game()
@@ -22,6 +27,7 @@ Game::Game()
     this->initWindow();
     this->initTextures();
     this->initPlayer();
+    this->initEnemies();
 
 }
 
@@ -39,7 +45,11 @@ Game::~Game() {
     {
         delete i;
     }
-
+    //delete all enemies
+    for (auto* i : this->enemies)
+    {
+        delete i;
+    }
 }
 //Functions
 
@@ -59,6 +69,7 @@ void Game::update()
     this->updateInput();
     this->player->update();
     this->updateBullets();
+    this->updateEnemy();
 
 }
 void Game::render()
@@ -71,8 +82,10 @@ void Game::render()
     {
         bullet->render(this->window);
     }
-    this->enemy->render(this->window);
-
+    for (auto* enemy : this->enemies)
+    {
+        enemy->render(this->window);
+    }
     this->window->display();
 
 
@@ -99,7 +112,7 @@ void Game::updateInput() {
         this->player->move(0.f, 1.f);
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->player->canAttcak())
     {
-        this->bullets.push_back(new Bullet(this->textures["BULLET"], this->player->getPos().x, this->player->getPos().y, 0.f, -1.f, 5.f));
+        this->bullets.push_back(new Bullet(this->textures["BULLET"], this->player->getPos().x+ this->player->getBounds().width/2.f, this->player->getPos().y, 0.f, -1.f, 5.f));
 
     }
 
@@ -130,6 +143,20 @@ void Game::updateBullets() {
     }
 
 
+}
+
+void Game::updateEnemy()
+{
+
+    this->spawnTimer += 0.5f;
+    if (this->spawnTimer >= this->timerMax) {
+        this->enemies.push_back(new Enemy(rand() % 200, rand() % 200));
+        this->spawnTimer = 0.f;
+    }
+    for (auto* enemy : this->enemies)
+    {
+        enemy->update(); 
+    }
 }
 
 

@@ -4,8 +4,6 @@
 
 #include "Enemy.h"
 
-class FloatRect;
-
 Enemy::Enemy(float pos_x, float pos_y) {
     this->initShape();
     this->initVariables();
@@ -20,11 +18,10 @@ Enemy::~Enemy() {
 
 }
 
-//Acessor
-const sf::FloatRect Enemy::getBounds()  const {
+sf::FloatRect Enemy::getBounds() const
+{
     return this->shape.getGlobalBounds();
 }
-
 
 void Enemy::initShape() {
     this->shape.setRadius(rand() % 20 + 20);
@@ -35,7 +32,7 @@ void Enemy::initShape() {
 void Enemy::initVariables() {
     this->type = 0;
     this->hpMax = 10;
-    this->speed=5.f;
+    this->speed = 5.f;
     this->hp = 0;
     this->damage = 1;
     this->points = 5;
@@ -47,8 +44,5 @@ void Enemy::render(sf::RenderTarget* target) {
 }
 
 void Enemy::update() {
-    this->shape.move(0.f, this->speed)
-
+    this->shape.move(0.f, this->speed);
 }
-
-

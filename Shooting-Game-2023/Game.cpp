@@ -14,7 +14,7 @@ void Game::initPlayer()
 {
     this->player = new Player();
 
-   
+
 }
 void Game::initEnemies()
 {
@@ -112,7 +112,7 @@ void Game::updateInput() {
         this->player->move(0.f, 1.f);
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->player->canAttcak())
     {
-        this->bullets.push_back(new Bullet(this->textures["BULLET"], this->player->getPos().x+ this->player->getBounds().width/2.f, this->player->getPos().y, 0.f, -1.f, 5.f));
+        this->bullets.push_back(new Bullet(this->textures["BULLET"], this->player->getPos().x + this->player->getBounds().width / 2.f, this->player->getPos().y, 0.f, -1.f, 5.f));
 
     }
 
@@ -150,16 +150,16 @@ void Game::updateEnemy()
 
     this->spawnTimer += 0.5f;
     if (this->spawnTimer >= this->timerMax) {
-        this->enemies.push_back(new Enemy(rand() % this->window.getSize().x-20.f, rand() -100.f));
+        this->enemies.push_back(new Enemy(rand() % this->window->getSize().x - 20.f, -100.f));
         this->spawnTimer = 0.f;
     }
-    for (int i = 0; i<enemies.size();i++)
+    for (int i = 0; i < enemies.size(); i++)
     {
-        this->enemies[i] ->update();
+        this->enemies[i]->update();
 
-        if(this->enemies[i]->getBounds().top> this->window->getSize().y){
-            this->enemies.erase(this->enemies.begin()+i);
-            std::cout<<this->enemies.size()<<"\n";
+        if (this->enemies[i]->getBounds().top > this->window->getSize().y) {
+            this->enemies.erase(this->enemies.begin() + i);
+            std::cout << this->enemies.size() << "\n";
         }
 
     }

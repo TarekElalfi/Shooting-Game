@@ -6,6 +6,8 @@
 #include "SFML/Window.hpp"
 #include "SFML/Window/ContextSettings.hpp"
 #include <map>
+#include "string"
+#include "sstream"
 #include "Player.h"
 #include "Bullet.h"
 #include "Enemy.h"
@@ -31,6 +33,9 @@ private:
     sf::Texture worldBackgroundTexture;
     sf::Sprite worldBackground;
 
+    //GamePoints
+    unsigned points;
+
     //Player
     Player* player;
     float spawnTimer;
@@ -42,6 +47,7 @@ private:
     void initTextures();
     void initGUI();
     void initWorld();
+    void initSystems();
     void initPlayer();
     void initEnemies();
 public:

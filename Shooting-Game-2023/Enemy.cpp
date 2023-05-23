@@ -32,7 +32,7 @@ void Enemy::initShape() {
 void Enemy::initVariables() {
     this->type = 0;
     this->hpMax = 10;
-    this->speed = 5.f;
+    this->speed = 2.f;
     this->hp = 0;
     this->damage = 1;
     this->points = 5;

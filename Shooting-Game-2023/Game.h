@@ -25,15 +25,23 @@ private:
     std::vector<Bullet*> bullets;
 
 
+    //GUI
+    sf::Font font;
+    sf::Text pointText;
+    sf::Texture worldBackgroundTexture;
+    sf::Sprite worldBackground;
+
     //Player
     Player* player;
     float spawnTimer;
     float timerMax;
     std::vector<Enemy*> enemies;
-
+   
 
     void initWindow();
     void initTextures();
+    void initGUI();
+    void initWorld();
     void initPlayer();
     void initEnemies();
 public:
@@ -47,9 +55,15 @@ public:
     void updatePollEvents();
     void updateInput();
     void update();
+    void updateGUI();
+    void renderGUI();
     void render();
+    void updateworld();
+    void updateCollosions();
+    void renderWorld();
     void updateBullets();
-    void updateEnemy();
+    void updateEnemies();
+    void updateCombat();
 
 };
 

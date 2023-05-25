@@ -8,6 +8,7 @@
 
 class Enemy {
 private:
+    unsigned pointCount;
     sf::CircleShape shape{};
     int type{};
     float speed;
@@ -15,9 +16,9 @@ private:
     int hpMax{};
     int damage{};
     int points{};
-    void initShape();
-    void initVariables();
 
+    void initVariables();
+    void initShape();
 
 
 public:
@@ -27,6 +28,7 @@ public:
 
     //Accessors
     sf::FloatRect getBounds() const;
+    const int& getPoints() const;
 
     //Functions
 

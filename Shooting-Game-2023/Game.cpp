@@ -31,7 +31,7 @@ Game::Game()
     this->initSystems();
     this->initPlayer();
     this->initEnemies();
-    
+
 
 }
 
@@ -62,14 +62,16 @@ void Game::run()
 {
     while (this->window->isOpen()) //to keep updating and rendering while playing
     {
+        this->updatePollEvents();
+        if (this->player->getHp() > 0) {
         this->update();
+    }
         this->render();
     }
 
 }
 void Game::update()
 {
-    this->updatePollEvents();
     this->updateInput();
     this->player->update();
     this->updateCollosions();
@@ -82,16 +84,27 @@ void Game::update()
 void Game::updateGUI()
 {
     std::stringstream ss;
-    ss<< "Points: " <<this->points;
+    ss << "Points: " << this->points;
     this->pointText.setString(ss.str());
+
+    //update the hp bar of the player
+  
+    
+    float hpPercent = static_cast<float>(this->player->getHp())/ this->player->getHpMax();
+    this->playerHpBar.setSize(sf::Vector2f(300.f * hpPercent, this->playerHpBar.getSize().y));
+
+
 }
 void Game::renderGUI()
 {
     this->window->draw(this->pointText);
+    this->window->draw(this->playerHpBarBack);
+    this->window->draw(this->playerHpBar);
+
 }
 void Game::render()
 {
-    
+
     this->window->clear();
     this->renderWorld();
     // to clear the old frame
@@ -107,6 +120,9 @@ void Game::render()
         enemy->render(this->window);
     }
     this->renderGUI();
+    if (this->player->getHp() <= 0) {
+        this->window->draw(this->gameOverText);
+    }
     this->window->display();
 
 
@@ -120,21 +136,22 @@ void Game::updateCollosions()
 { //to prevent the player from getting out of the window
     //Left
     if (this->player->getBounds().left < 0.f) {
-        this->player->setPosition(0.f,this->player->getBounds().top);
+        this->player->setPosition(0.f, this->player->getBounds().top);
     }
 
     // Right
 
-    else if (this->player->getBounds().left + this->player->getBounds().width >= this->window->getSize().x) {
-        this->player->setPosition(this->window.getSize().x - this->player->getBounds().width ,this->player->getBounds().top);
+    else if (this->player->getBounds().left + this->player->getBounds().width >= this->window->getSize().x) 
+    {
+        this->player->setPosition(this->window->getSize().x - this->player->getBounds().width, this->player->getBounds().top);
     }
     // Top
     if (this->player->getBounds().top < 0.f) {
-        this->player->setPosition(this->player->getBounds().left,0.f);
+        this->player->setPosition(this->player->getBounds().left, 0.f);
     }
     // Bottom
     else if (this->player->getBounds().top + this->player->getBounds().height >= this->window->getSize().y) {
-        this->player->setPosition(this->player->getBounds().left , this->window.getSize().y - this->player->getBounds().height );
+        this->player->setPosition(this->player->getBounds().left, this->window->getSize().y - this->player->getBounds().height);
     }
 
 
@@ -183,20 +200,37 @@ void Game::initGUI()
 {
     //to load the font
     if (!this->font.loadFromFile("Fonts/PixellettersFull.ttf")) {
-        std::cout << "Error in fonts"<<"\n";
+        std::cout << "Error in fonts" << "\n";
     }
+    this->pointText.setPosition(700,25.f);
     this->pointText.setFont(this->font);
-    this->pointText.setCharacterSize(12);
+    this->pointText.setCharacterSize(20);
     this->pointText.setFillColor(sf::Color::White);
     this->pointText.setString("test");
+    //Game over
+    this->gameOverText.setFont(this->font);
+    this->gameOverText.setCharacterSize(60);
+    this->gameOverText.setFillColor(sf::Color::Red);
+    this->gameOverText.setString("GAME OVER!!!");
 
-    //init point text
+    //init point 
+    this->playerHpBar.setSize(sf::Vector2f(300.f, 25.f));
+    this->playerHpBar.setFillColor(sf::Color::Red);
+    this->playerHpBar.setPosition(sf::Vector2f(20.f, 20.f));
+
+
+    this->playerHpBarBack = this->playerHpBar;
+    this->playerHpBarBack.setFillColor(sf::Color(25, 25, 25, 200));
+
+
+
+
 }
 
 void Game::initWorld()
 {
     if (!this->worldBackgroundTexture.loadFromFile("Textures/background1.jpg")) {
-        std::cout << "Background Can NOT be loaded"<<"\n";
+        std::cout << "Background Can NOT be loaded" << "\n";
     }
     this->worldBackground.setTexture(this->worldBackgroundTexture);
 }
@@ -213,7 +247,6 @@ void Game::updateBullets() {
 
             delete this->bullets.at(counter);
             this->bullets.erase(this->bullets.begin() + counter);
-            --counter;
         }
         ++counter;
     }
@@ -224,7 +257,7 @@ void Game::updateBullets() {
 
 void Game::updateCombat()
 {
-    
+
     for (int i = 0; i < enemies.size(); i++)
     {
         bool enemy_deleted = false;
@@ -233,13 +266,13 @@ void Game::updateCombat()
                 this->points += this->enemies[i]->getPoints();
 
                 delete this->enemies[i];
-                this->enemies.erase(this->enemies.begin()+i);
+                this->enemies.erase(this->enemies.begin() + i);
 
                 delete this->bullets[k];
                 this->bullets.erase(this->bullets.begin() + k);
 
                 enemy_deleted = true;
-            
+
             }
         }
     }
@@ -250,12 +283,12 @@ void Game::updateEnemies()
 
 
     this->spawnTimer += 0.5f;
-    if (this->spawnTimer>=this->timerMax) {
-        
+    if (this->spawnTimer >= this->timerMax) {
+
         this->enemies.push_back(new Enemy(rand() % this->window->getSize().x - 20.f, -100.f));
         this->spawnTimer = 0.f;
 
-    
+
     }
 
 
@@ -265,17 +298,20 @@ void Game::updateEnemies()
     {
         enemy->update();
 
-        if (enemy->getBounds().top> this->window->getSize().y) {
+        if (enemy->getBounds().top > this->window->getSize().y) {
 
             delete this->enemies.at(counter);
             this->enemies.erase(this->enemies.begin() + counter);
-            --counter;
+           
 
-        } else if(enemy->getBounds().intersects(this->player->getBounds())){
+        }
+
+        else if (enemy->getBounds().intersects(this->player->getBounds())) {
+            this->player->loseHp(this->enemies.at(counter)->getDamage());
             delete this->enemies.at(counter);
             this->enemies.erase(this->enemies.begin() + counter);
-            --counter;
-
+          
+            
         }
         ++counter;
     }
@@ -283,7 +319,7 @@ void Game::updateEnemies()
 }
 
 void Game::initSystems() {
-    this->points=0;
+    this->points = 0;
 
 }
 

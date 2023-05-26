@@ -19,10 +19,14 @@ private:
     float attackCooldown;
     float attackCooldownMax;
 
+    int hp;
+    int hpMax;
+
     // private functions
     void initVariables();
     void initTexture();
     void initSprite();
+
 
 public:
     Player();
@@ -31,10 +35,14 @@ public:
     //Accessor
     const sf::Vector2f& getPos() const;
     const sf::FloatRect getBounds() const;
-    
+    const int& getHp() const;
+    const int& getHpMax() const;
+
 
     void setPosition(const sf::Vector2f pos);
     void setPosition(const float x, const float y);
+    void loseHp(const int value);
+    void setHp(const int hp);
     //    Functions
 
     void move(const float dirX, const float dirY);

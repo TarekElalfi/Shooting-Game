@@ -31,7 +31,7 @@ public:
     const int& getPoints() const;
 
     //Functions
-
+    const int& getDamage()const;
     void update();
     void render(sf::RenderTarget* target);
 

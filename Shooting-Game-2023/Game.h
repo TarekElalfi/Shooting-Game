@@ -30,6 +30,7 @@ private:
     //GUI
     sf::Font font;
     sf::Text pointText;
+    sf::Text gameOverText;
     sf::Texture worldBackgroundTexture;
     sf::Sprite worldBackground;
 
@@ -38,10 +39,16 @@ private:
 
     //Player
     Player* player;
+
+    //Player GUI
+
+    sf::RectangleShape playerHpBar;
+    sf::RectangleShape playerHpBarBack;
+
     float spawnTimer;
     float timerMax;
     std::vector<Enemy*> enemies;
-   
+
 
     void initWindow();
     void initTextures();

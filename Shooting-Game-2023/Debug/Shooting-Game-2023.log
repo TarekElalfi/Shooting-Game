@@ -1,2 +1,3 @@
-﻿  Player.cpp
+﻿  Game.cpp
+C:\Users\Admin\OneDrive\Desktop\Shooting-Game-2023\Shooting-Game-2023\Game.cpp(261,23): warning C4018: '<': signed/unsigned mismatch
   Shooting-Game-2023.vcxproj -> C:\Users\Admin\OneDrive\Desktop\Shooting-Game-2023\Debug\Shooting-Game-2023.exe
